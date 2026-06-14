@@ -10,7 +10,7 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-*.properties
+
 # Package Files #
 *.jar
 *.war
@@ -58,3 +58,7 @@ build/
 ### VS Code ###
 .vscode/
 >>>>>>> 096b7a1 (Intial Commit)
+
+
+#### JAVA
+application.properties
