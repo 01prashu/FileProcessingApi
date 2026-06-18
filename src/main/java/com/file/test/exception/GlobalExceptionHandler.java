@@ -34,7 +34,8 @@ public class GlobalExceptionHandler {
     {
         ResponseDto responseDto = new ResponseDto();
         responseDto.setStatus("Failed");
-        responseDto.setStatus(e.getMessage());
+        responseDto.setRemark(e.getMessage());
+
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDto);
     }
     @ExceptionHandler(Exception.class)

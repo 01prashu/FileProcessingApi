@@ -1,5 +1,6 @@
 package com.file.test.util;
 
+import com.file.test.exception.DocumentProcessingException;
 import com.file.test.model.CustomFile;
 import com.file.test.repository.FileRepository;
 
@@ -30,6 +31,10 @@ public class FileServiceHelper {
         return fileName.substring(fileName.lastIndexOf(".")+1);
     }
     public  String processMerging(List<MultipartFile> files) throws IOException {
+        if(files.isEmpty() || files.size()==1)
+        {
+            throw new DocumentProcessingException("At least two files are needed to merge");
+        }
         PDFMergerUtility merger = new PDFMergerUtility();
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String mergeFileName="Merge_"+timestamp+".pdf";
