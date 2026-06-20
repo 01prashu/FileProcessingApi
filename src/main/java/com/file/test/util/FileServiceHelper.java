@@ -4,6 +4,7 @@ import com.file.test.exception.DocumentProcessingException;
 import com.file.test.model.CustomFile;
 import com.file.test.repository.FileRepository;
 
+import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.management.MemoryUsage;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -55,7 +57,7 @@ public class FileServiceHelper {
 
         File fullPath= new File(pdfMergePath,mergeFileName);
         merger.setDestinationFileName(fullPath.getAbsolutePath());
-        merger.mergeDocuments(null);
+        merger.mergeDocuments(MemoryUsageSetting.setupTempFileOnly().streamCache);
         return mergeFileName;
     }
 

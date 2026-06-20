@@ -19,7 +19,8 @@ public class FileController {
     @Autowired
     FileService fileService;
     @PostMapping("/merge")
-    ResponseEntity<ResponseDto>mergeController(@RequestParam("file") List<MultipartFile> file) throws IOException {
+    ResponseEntity<ResponseDto>mergeController
+            (@RequestParam("file") List<MultipartFile> file) throws IOException {
         ResponseDto responseDto =fileService.mergeDocument(file);
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }
